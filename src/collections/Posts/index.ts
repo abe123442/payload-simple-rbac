@@ -2,6 +2,7 @@ import { adminOrAuthor } from '@/access'
 import { CollectionConfig } from 'payload'
 
 import Author from './field/Author'
+import { slugField } from '@/fields/slug'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -9,7 +10,7 @@ export const Posts: CollectionConfig = {
     read: adminOrAuthor
   },
   admin: {
-    defaultColumns: ['title', 'createdAt', 'updatedAt']
+    defaultColumns: ['title', 'slug', 'createdAt', 'updatedAt']
   },
   timestamps: true,
   versions: {
@@ -28,6 +29,7 @@ export const Posts: CollectionConfig = {
       name: 'content',
       type: 'richText',
     },
-    Author
+    Author,
+    ...slugField(),
   ]
 }
