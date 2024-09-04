@@ -84,6 +84,8 @@ export interface Post {
     [k: string]: unknown;
   } | null;
   author?: (string | null) | User;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
